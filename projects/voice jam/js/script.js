@@ -1,5 +1,5 @@
 /**
- * Title of Project
+ * Voice Jam
  * Nancy He
  * 
  * This is a template. You must fill in the title, author, 
@@ -7,26 +7,27 @@
  */
 
 "use strict";
-
-/**
- * Description of preload
-*/
-function preload() {
-
-}
+const speechRecognizer = new p5.SpeechRec(`zh-CN`);
+const speechSynthesizer = new p5.Speech();
 
 
-/**
- * Description of setup
-*/
 function setup() {
+    createCanvas(500, 500);
 
+    speechRecognizer.onResult = handleSpeechInput;
+    speechRecognizer.continuous = true;
+    speechRecognizer.start();
 }
 
-
-/**
- * Description of draw()
-*/
 function draw() {
+
+  
+}
+
+function handleSpeechInput() {
+    if (!speechRecognizer.resultValue) {
+        return;
+    }
+    console.log(speechRecognizer.resultString);
 
 }

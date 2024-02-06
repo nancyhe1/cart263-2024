@@ -6,7 +6,7 @@
  */
 
 "use strict";
-const speechRecognizer = new p5.SpeechRec(`zh-CN`);
+const speechRecognizer = new p5.SpeechRecognizer(`zh-CN`);
 const speechSynthesizer = new p5.Speech();
 const MandarinText = [
     "去",
@@ -14,10 +14,12 @@ const MandarinText = [
     "四十",
     "水",
 ]; 
+let currentAnswer = ``;
+
 
 
 function setup() {
-    createCanvas(500, 500);
+    createCanvas(windowWidth, windowHeight);
 
     speechRecognizer.onResult = handleSpeechInput;
     speechRecognizer.continuous = true;
@@ -29,7 +31,7 @@ background(240, 207, 255);
 
 textSize(30);
 textAlign(CENTER,CENTER);
-text(`Let's see how good is your Chinese pronounciation`, width/2, height/2);
+//text(`Let's see how good is your Chinese pronounciation`, width/2, height/2);
   
 }
 

@@ -1,3 +1,3 @@
-# Template p5 project
+# Voice Jam
 
-This is the README file for the entire project. For more official projects you should write information here about the nature of the project, your name, any special explanations of how the project works, etc.
+This project is to understand p5.speech and to engage with all the possiblities. For this project, with the help of Pippin, We came up with a pronunciation game, where the user will have to try and pronunciate the displayed Mandarin word correctly and according to how many tries, the computer will either help them or make fun of them for pronunciating it wrong.

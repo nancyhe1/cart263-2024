@@ -2,13 +2,18 @@
  * Voice Jam
  * Nancy He
  * 
- * This is a template. You must fill in the title, author, 
- * and this description to match your project!
+ *Creating a pronounciating game with Mandarin to show the different tones.
  */
 
 "use strict";
 const speechRecognizer = new p5.SpeechRec(`zh-CN`);
 const speechSynthesizer = new p5.Speech();
+const MandarinText = [
+    "去",
+    "日",
+    "四十",
+    "水",
+]; 
 
 
 function setup() {
@@ -20,7 +25,11 @@ function setup() {
 }
 
 function draw() {
+background(240, 207, 255);
 
+textSize(30);
+textAlign(CENTER,CENTER);
+text(`Let's see how good is your Chinese pronounciation`, width/2, height/2);
   
 }
 

@@ -9,17 +9,10 @@
 
 let state = `title`; // can be title, simulation
 
-const speechRecognizer = new p5.SpeechRec(`zh-CN`);
-const speechSynthesizer = new p5.Speech();
-const displayTextMandarin = `你好`;
-const displayTextPhonetics = `nǐ hǎo`;
 
 function setup() {
-    createCanvas(500, 500);
+    createCanvas(windowWidth, windowHeight);
 
-    speechRecognizer.onResult = handleSpeechInput;
-    speechRecognizer.continuous = true;
-    speechRecognizer.start();
 }
 
 function draw() {
@@ -30,14 +23,6 @@ function draw() {
       else if (state === 'simulation') {
         simulation();
       }
-  
-}
-
-function handleSpeechInput() {
-    if (!speechRecognizer.resultValue) {
-        return;
-    }
-    console.log(speechRecognizer.resultString);
 
 }
 
@@ -47,25 +32,23 @@ function title() {
     textSize(30);
     fill(255);
     textAlign(CENTER,CENTER);
-    text(`Let's see how good is your Chinese pronounciation`, width/2, height/2);
-  
+    text(`Let's see how good is your Chinese pronounciation`, width/2, height/2); 
 }
+
 function simulation() {
     background(0);
   
     textSize(64);
   textAlign(CENTER, CENTER);
   fill(255);
-  
-  push();
-  if (speechRecognizer.resultString === `你好`) {
-    fill(50, 255, 50);
-  }
-  text(displayTextMandarin, width/2, height/3);
-  pop();
-  
-  text(displayTextPhonetics, width/2, 2 * height/3);
+
 }
+
+function mousePressed() {
+    if (state === 'title') {
+      state = 'simulation';
+    }  
+}  
 
 /* const speechRecognizer = new p5.SpeechRecognizer(`zh-CN`);
 const speechSynthesizer = new p5.Speech();

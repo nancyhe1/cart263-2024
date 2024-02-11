@@ -8,25 +8,40 @@
 
 "use strict";
 
-/**
- * Description of preload
-*/
-function preload() {
+const speechRecognizer = new p5.SpeechRec(`zh-CN`);
+const speechSynthesizer = new p5.Speech();
+const displayTextMandarin = `你好`;
+const displayTextPhonetics = `nǐ hǎo`;
 
-}
-
-
-/**
- * Description of setup
-*/
 function setup() {
+    createCanvas(500, 500);
 
+    speechRecognizer.onResult = handleSpeechInput;
+    speechRecognizer.continuous = true;
+    speechRecognizer.start();
 }
 
-
-/**
- * Description of draw()
-*/
 function draw() {
+  background(0);
+  
+  textSize(64);
+  textAlign(CENTER, CENTER);
+  fill(255);
+  
+  push();
+  if (speechRecognizer.resultString === `你好`) {
+    fill(50, 255, 50);
+  }
+  text(displayTextMandarin, width/2, height/3);
+  pop();
+  
+  text(displayTextPhonetics, width/2, 2 * height/3);
+}
+
+function handleSpeechInput() {
+    if (!speechRecognizer.resultValue) {
+        return;
+    }
+    console.log(speechRecognizer.resultString);
 
 }
